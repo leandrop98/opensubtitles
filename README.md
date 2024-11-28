@@ -1,2 +1,2 @@
-# opensubtitles-sdk
+# Open Subtitles SDK
 Open Subtitles SDK

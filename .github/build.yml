@@ -1,0 +1,44 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - "**"  # Run on pushes to all branches. Adjust as needed.
+  pull_request: # Optional: Run on pull requests too.
+    branches:
+      - "**"
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Java (adjust Java version if necessary)
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # or 'zulu', 'adopt', etc.
+          java-version: '17'      # Change to 11 or 8 if your project requires an older JDK
+          cache: 'gradle'
+
+      # Step 3: Cache Gradle dependencies
+      - name: Cache Gradle Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      # Step 4: Build the project
+      - name: Build the Project
+        run: ./gradlew build --stacktrace
+
+      # Step 5: Run tests
+      - name: Run Tests
+        run: ./gradlew test --stacktrace
+
