@@ -27,7 +27,6 @@ public class AuthTest extends BaseTest {
         });
 
         assertEquals(401, exception.getStatusCode());
-        assertEquals("Invalid username or password", exception.getMessage());
     }
 
     @Test

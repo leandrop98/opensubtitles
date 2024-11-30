@@ -12,6 +12,12 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    env:
+      # Define the three secrets as environment variables
+      TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
+      TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
+      TEST_USER_USERNAME: ${{ secrets.TEST_USER_USERNAME }}
+
     steps:
       # Step 1: Check out the repository
       - name: Checkout Code
@@ -38,7 +44,10 @@ jobs:
       - name: Build the Project
         run: ./gradlew build --stacktrace
 
-      # Step 5: Run tests
+      # Step 5: Run tests with environment variables for secrets
       - name: Run Tests
         run: ./gradlew test --stacktrace
-
+        env:
+          TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
+          TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
+          TEST_USER_USERNAME: ${{ secrets.TEST_USER_USERNAME }}
