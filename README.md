@@ -1,2 +1,2 @@
-# Open Subtitles SDK
-Open Subtitles SDK
+# Open Subtitles API
+Open Subtitles API

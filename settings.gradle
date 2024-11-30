@@ -1,2 +1,6 @@
-rootProject.name = 'opensubtitles-sdk'
+rootProject.name = 'opensubtitles'
+include 'src:test:integration'
+findProject(':src:test:integration')?.name = 'integration'
+include 'src:test-integration'
+findProject(':src:test-integration')?.name = 'test-integration'
 
