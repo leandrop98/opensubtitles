@@ -9,7 +9,7 @@ public class SubtitleSearchIntegrationTest extends BaseIntegrationTest {
     @Test
     public void searchSubtitle(){
         Assertions.assertDoesNotThrow(() -> {
-            SubtitleSearchRequest request = new SubtitleSearchRequest("iron", "en");
+            SubtitleSearchRequest request = new SubtitleSearchRequest("deadpool", "en");
             SubtitleSearchResponse res = openSubtitlesService.searchSubtitles(request);
             Assertions.assertNotNull(res);
             Assertions.assertNotEquals(0, res.getTotalCount());

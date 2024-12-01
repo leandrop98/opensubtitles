@@ -66,7 +66,7 @@ public class Subtitle {
         private int votes;
 
         @SerializedName("ratings")
-        private int ratings;
+        private double ratings;
 
         @SerializedName("from_trusted")
         private Boolean fromTrusted;
@@ -152,7 +152,7 @@ public class Subtitle {
             return votes;
         }
 
-        public int getRatings() {
+        public double getRatings() {
             return ratings;
         }
 

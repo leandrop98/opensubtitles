@@ -100,7 +100,10 @@ public class OpenSubtitlesService {
                 throw new OpenSubtitlesApiException("No content in the response body", response.code());
             }
         } else {
-            throw new OpenSubtitlesApiException("Request failed: " + response.message(), response.code());
+            if (response.errorBody()!=null){
+                throw new OpenSubtitlesApiException("Request failed: " + response.errorBody().toString(), response.code());
+            }
+            throw new OpenSubtitlesApiException("Request failed! ", response.code());
         }
     }
 
