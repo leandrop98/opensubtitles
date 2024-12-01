@@ -43,79 +43,54 @@ public class Subtitle {
 
         @SerializedName("subtitle_id")
         private String subtitleId;
-
         @SerializedName("language")
         private String language;
-
         @SerializedName("download_count")
         private int downloadCount;
-
         @SerializedName("new_download_count")
         private int newDownloadCount;
-
         @SerializedName("hearing_impaired")
         private boolean hearingImpaired;
-
         @SerializedName("hd")
         private boolean hd;
-
         @SerializedName("fps")
         private double fps;
-
         @SerializedName("votes")
         private int votes;
-
         @SerializedName("ratings")
         private double ratings;
-
         @SerializedName("from_trusted")
         private Boolean fromTrusted;
-
         @SerializedName("foreign_parts_only")
         private boolean foreignPartsOnly;
-
         @SerializedName("upload_date")
         private String uploadDate;
-
         @SerializedName("file_hashes")
         private List<String> fileHashes;
-
         @SerializedName("ai_translated")
         private boolean aiTranslated;
-
         @SerializedName("nb_cd")
         private int nbCd;
-
         @SerializedName("slug")
         private String slug;
-
         @SerializedName("machine_translated")
         private boolean machineTranslated;
-
         @SerializedName("release")
         private String release;
-
         @SerializedName("comments")
         private String comments;
-
         @SerializedName("legacy_subtitle_id")
-        private String legacySubtitleId;
-
+        private Integer legacySubtitleId;
         @SerializedName("legacy_uploader_id")
-        private int legacyUploaderId;
-
+        private Integer legacyUploaderId;
         @SerializedName("uploader")
         private Uploader uploader;
-
         @SerializedName("feature_details")
         private FeatureDetails featureDetails;
-
         @SerializedName("url")
         private String url;
-
         @SerializedName("related_links")
         private List<RelatedLink> relatedLinks;
-
         @SerializedName("files")
         private List<SubtitleFile> files;
 
@@ -196,11 +171,11 @@ public class Subtitle {
             return comments;
         }
 
-        public String getLegacySubtitleId() {
+        public Integer getLegacySubtitleId() {
             return legacySubtitleId;
         }
 
-        public int getLegacyUploaderId() {
+        public Integer getLegacyUploaderId() {
             return legacyUploaderId;
         }
 
@@ -301,11 +276,11 @@ public class Subtitle {
             this.comments = comments;
         }
 
-        public void setLegacySubtitleId(String legacySubtitleId) {
+        public void setLegacySubtitleId(Integer legacySubtitleId) {
             this.legacySubtitleId = legacySubtitleId;
         }
 
-        public void setLegacyUploaderId(int legacyUploaderId) {
+        public void setLegacyUploaderId(Integer legacyUploaderId) {
             this.legacyUploaderId = legacyUploaderId;
         }
 
@@ -447,15 +422,35 @@ public class Subtitle {
     public static class FeatureDetails {
 
         @SerializedName("feature_id")
-        private int featureId;
-
+        private Integer featureId;
         @SerializedName("feature_type")
         private String featureType;
-
         @SerializedName("language_name")
         private String languageName;
+        @SerializedName("year")
+        private Integer year;
+        @SerializedName("title")
+        private String title;
+        @SerializedName("movie_name")
+        private String movieName;
+        @SerializedName("imdb_id")
+        private Integer imdbId;
+        @SerializedName("tmdb_id")
+        private Integer tmdbId;
+        @SerializedName("season_number")
+        private Integer seasonNumber;
+        @SerializedName("episode_number")
+        private Integer episodeNumber;
+        @SerializedName("parent_imdb_id")
+        private Integer parentImdbId;
+        @SerializedName("parent_title")
+        private String parentTitle;
+        @SerializedName("parent_tmdb_id")
+        private Integer parentTmdbId;
+        @SerializedName("parent_feature_id")
+        private Integer parentFeatureId;
 
-        // Getters
+
         public int getFeatureId() {
             return featureId;
         }
@@ -468,7 +463,7 @@ public class Subtitle {
             return languageName;
         }
 
-        // Setters
+
         public void setFeatureId(int featureId) {
             this.featureId = featureId;
         }
@@ -479,6 +474,98 @@ public class Subtitle {
 
         public void setLanguageName(String languageName) {
             this.languageName = languageName;
+        }
+
+        public void setFeatureId(Integer featureId) {
+            this.featureId = featureId;
+        }
+
+        public Integer getYear() {
+            return year;
+        }
+
+        public void setYear(Integer year) {
+            this.year = year;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getMovieName() {
+            return movieName;
+        }
+
+        public void setMovieName(String movieName) {
+            this.movieName = movieName;
+        }
+
+        public Integer getImdbId() {
+            return imdbId;
+        }
+
+        public void setImdbId(Integer imdbId) {
+            this.imdbId = imdbId;
+        }
+
+        public Integer getTmdbId() {
+            return tmdbId;
+        }
+
+        public void setTmdbId(Integer tmdbId) {
+            this.tmdbId = tmdbId;
+        }
+
+        public Integer getSeasonNumber() {
+            return seasonNumber;
+        }
+
+        public void setSeasonNumber(Integer seasonNumber) {
+            this.seasonNumber = seasonNumber;
+        }
+
+        public Integer getEpisodeNumber() {
+            return episodeNumber;
+        }
+
+        public void setEpisodeNumber(Integer episodeNumber) {
+            this.episodeNumber = episodeNumber;
+        }
+
+        public Integer getParentImdbId() {
+            return parentImdbId;
+        }
+
+        public void setParentImdbId(Integer parentImdbId) {
+            this.parentImdbId = parentImdbId;
+        }
+
+        public String getParentTitle() {
+            return parentTitle;
+        }
+
+        public void setParentTitle(String parentTitle) {
+            this.parentTitle = parentTitle;
+        }
+
+        public Integer getParentTmdbId() {
+            return parentTmdbId;
+        }
+
+        public void setParentTmdbId(Integer parentTmdbId) {
+            this.parentTmdbId = parentTmdbId;
+        }
+
+        public Integer getParentFeatureId() {
+            return parentFeatureId;
+        }
+
+        public void setParentFeatureId(Integer parentFeatureId) {
+            this.parentFeatureId = parentFeatureId;
         }
     }
 }
