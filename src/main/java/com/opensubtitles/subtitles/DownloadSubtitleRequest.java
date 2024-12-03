@@ -1,12 +1,28 @@
 package com.opensubtitles.subtitles;
 
+import com.google.gson.annotations.SerializedName;
+
 public class DownloadSubtitleRequest {
+
+    @SerializedName("file_id")
     private int fileId;
+
+    @SerializedName("sub_format")
     private String subFormat; // Optional, subtitle format (e.g., .srt, .vtt)
+
+    @SerializedName("file_name")
     private String fileName; // Optional, desired file name
+
+    @SerializedName("in_fps")
     private Float inFps; // Optional, input FPS for conversion
+
+    @SerializedName("out_fps")
     private Float outFps; // Optional, output FPS for conversion
+
+    @SerializedName("timeshift")
     private Float timeshift; // Optional, time shift in seconds
+
+    @SerializedName("force_download")
     private boolean forceDownload; // Optional, force download flag
 
     public DownloadSubtitleRequest(int fileId) {
