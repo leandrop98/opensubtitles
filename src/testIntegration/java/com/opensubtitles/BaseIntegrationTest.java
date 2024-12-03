@@ -10,7 +10,7 @@ public class BaseIntegrationTest {
 
     @BeforeAll
     public static void setUp() {
-        openSubtitlesService = new OpenSubtitlesService(System.getenv("TEST_API_KEY"), "appnametest", "v1.0.0");
+        openSubtitlesService = new OpenSubtitlesService(System.getenv("TEST_API_KEY"), "appnametest", "1.0.0");
     }
 
     @BeforeEach
