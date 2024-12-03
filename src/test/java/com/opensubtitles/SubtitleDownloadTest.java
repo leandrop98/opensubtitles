@@ -91,7 +91,7 @@ public class SubtitleDownloadTest extends BaseTest {
         assertEquals("application/json", recordedRequest.getHeader("Content-Type"));
 
         // Verify the request body
-        String expectedRequestBody = "{\"fileId\":12345,\"subFormat\":\"srt\",\"fileName\":\"custom_name.srt\",\"inFps\":23.976,\"outFps\":24.0,\"timeshift\":1.5,\"forceDownload\":true}".trim();
+        String expectedRequestBody = "{\"file_id\":12345,\"sub_format\":\"srt\",\"file_name\":\"custom_name.srt\",\"in_fps\":23.976,\"out_fps\":24.0,\"timeshift\":1.5,\"force_download\":true}".trim();
         assertEquals(expectedRequestBody.trim(), recordedRequest.getBody().readUtf8().trim());
     }
 }
