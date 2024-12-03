@@ -95,7 +95,7 @@ import opensubtitles.api.subtitles.SubtitleSearchRequest;
 
 public class Main {
    public static void main(String[] args) {
-      OpenSubtitlesService openSubtitlesService = new OpenSubtitlesService(System.getenv("TEST_API_KEY"), "appnametest", "v1.0.0");
+      OpenSubtitlesService openSubtitlesService = new OpenSubtitlesService(System.getenv("TEST_API_KEY"), "appnametest", "1.0.0");
       SubtitleSearchRequest request = new SubtitleSearchRequest("iron", "en");
       SubtitleSearchResponse res = openSubtitlesService.searchSubtitles(request);
    }
