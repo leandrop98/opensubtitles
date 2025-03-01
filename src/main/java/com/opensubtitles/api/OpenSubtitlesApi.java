@@ -39,7 +39,7 @@ public interface OpenSubtitlesApi {
 
     // Download subtitle endpoint
     @POST("download")
-    @Headers("Content-Type: application/json")
     Call<DownloadSubtitleResponse> downloadSubtitle(@Body DownloadSubtitleRequest request);
+
 }
 

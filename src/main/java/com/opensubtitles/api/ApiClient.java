@@ -34,6 +34,7 @@ public class ApiClient {
                     // Build the request with default headers
                     Request.Builder requestBuilder = original.newBuilder()
                             .header("Content-Type", "application/json")
+                            .header( "Accept" , "application/json")
                             .header("Api-Key", apiKey);
 
 
@@ -50,7 +51,6 @@ public class ApiClient {
                     Request request = requestBuilder
                             .method(original.method(), original.body())
                             .build();
-
                     return chain.proceed(request);
                 }
             });
