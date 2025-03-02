@@ -127,8 +127,7 @@ public class OpenSubtitlesService {
 
         Call<DownloadSubtitleResponse> call = api.downloadSubtitle(request);
         Response<DownloadSubtitleResponse> response = call.execute();
-
-        if (response.isSuccessful() && response.body() != null) {
+        if (response.body() != null) {
             return response.body();
         } else {
             throw new OpenSubtitlesApiException("Failed to download subtitle: " + response.message(), response.code());
@@ -137,8 +136,7 @@ public class OpenSubtitlesService {
     public DownloadSubtitleResponse downloadSubtitle(DownloadSubtitleRequest request) throws IOException {
         Call<DownloadSubtitleResponse> call = api.downloadSubtitle(request);
         Response<DownloadSubtitleResponse> response = call.execute();
-
-        if (response.isSuccessful() && response.body() != null) {
+        if (response.body() != null) {
             return response.body();
         } else {
             throw new OpenSubtitlesApiException("Failed to download subtitle: " + response.message(), response.code());
