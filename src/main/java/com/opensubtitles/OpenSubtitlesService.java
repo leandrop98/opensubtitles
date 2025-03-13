@@ -1,13 +1,16 @@
 package com.opensubtitles;
 
+import com.google.gson.Gson;
 import com.opensubtitles.api.ApiClient;
 import com.opensubtitles.api.OpenSubtitlesApi;
 import com.opensubtitles.auth.LoginRequest;
 import com.opensubtitles.auth.LoginResponse;
 import com.opensubtitles.auth.LogoutResponse;
+import com.opensubtitles.common.DownloadLimitOpenSubtitlesApiException;
 import com.opensubtitles.common.OpenSubtitlesApiException;
 import com.opensubtitles.infos.LanguagesResponse;
 import com.opensubtitles.subtitles.*;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 import java.io.IOException;
@@ -123,22 +126,28 @@ public class OpenSubtitlesService {
 
     // Download subtitle in the specified format
     public DownloadSubtitleResponse downloadSubtitle(int fileId) throws IOException {
-        DownloadSubtitleRequest request = new DownloadSubtitleRequest(fileId);
-
-        Call<DownloadSubtitleResponse> call = api.downloadSubtitle(request);
-        Response<DownloadSubtitleResponse> response = call.execute();
-        if (response.body() != null) {
-            return response.body();
-        } else {
-            throw new OpenSubtitlesApiException("Failed to download subtitle: " + response.message(), response.code());
-        }
+        return downloadSubtitle(new DownloadSubtitleRequest(fileId));
     }
     public DownloadSubtitleResponse downloadSubtitle(DownloadSubtitleRequest request) throws IOException {
         Call<DownloadSubtitleResponse> call = api.downloadSubtitle(request);
         Response<DownloadSubtitleResponse> response = call.execute();
-        if (response.body() != null) {
+        if (response.isSuccessful()) {
             return response.body();
-        } else {
+        }
+        else{
+            String errorBody = null;
+            if (response.errorBody() != null) {
+                errorBody = response.errorBody().string();  // This consumes the body
+
+                DownloadSubtitleResponse errorResponse = new Gson().fromJson(errorBody, DownloadSubtitleResponse.class);
+
+                throw new DownloadLimitOpenSubtitlesApiException(
+                        errorResponse.getMessage(),
+                        errorResponse.getRequests(),
+                        errorResponse.getRemainingRequests(),
+                        errorResponse.getResetTime(),
+                        errorResponse.getResetTimeUtc());
+            }
             throw new OpenSubtitlesApiException("Failed to download subtitle: " + response.message(), response.code());
         }
     }
