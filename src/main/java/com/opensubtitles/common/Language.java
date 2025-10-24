@@ -2,7 +2,9 @@ package com.opensubtitles.common;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Language {
+import java.io.Serializable;
+
+public class Language implements Serializable {
 
     @SerializedName("language_code")
     private String languageCode;

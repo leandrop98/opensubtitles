@@ -1,9 +1,11 @@
 package com.opensubtitles.common;
 
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class Subtitle {
+public class Subtitle implements Serializable {
 
     @SerializedName("id")
     private String id;
